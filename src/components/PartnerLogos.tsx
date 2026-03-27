@@ -1,16 +1,12 @@
 const schools = [
   "The Daily Pennsylvanian",
-  "The Harvard Crimson",
   "The Yale Daily News",
   "The Columbia Spectator",
   "The Daily Princetonian",
-  "The Stanford Daily",
-  "The Cornell Daily Sun",
   "The Brown Daily Herald",
   "The Dartmouth",
-  "The Michigan Daily",
   "The Duke Chronicle",
-  "The Daily Northwestern",
+  "George's The Hoya",
 ];
 
 const PartnerLogos = () => {
