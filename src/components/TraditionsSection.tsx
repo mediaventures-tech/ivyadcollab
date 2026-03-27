@@ -1,41 +1,41 @@
 import { motion } from "framer-motion";
 
-const traditions = [
+const newspapers = [
   {
     school: "University of Pennsylvania",
-    tradition: "The Daily Pennsylvanian",
-    description: "Juniors march down Locust Walk with styrofoam hats and canes, celebrating their rise to senior status — one of Penn's oldest and most spirited traditions.",
-    color: "hsl(0, 72%, 51%)",
+    newspaper: "The Daily Pennsylvanian",
+    description: "The Daily Pennsylvanian has been the independent student newspaper of the University of Pennsylvania since 1885, covering campus news, culture, and beyond.",
+    color: "#aa1e21",
   },
   {
     school: "Brown University",
-    tradition: "The Brown Daily Herald",
-    description: "Freshmen discover their upperclassman House assignments as senior residents storm the Yard in themed celebrations — pure energy and pageantry.",
-    color: "hsl(0, 60%, 35%)",
+    newspaper: "The Brown Daily Herald",
+    description: "The Brown Daily Herald is the independent student newspaper of Brown University, delivering news and analysis to the Brown community since 1891.",
+    color: "#aa1e21",
   },
   {
     school: "Columbia University",
-    tradition: "Columbia Daily Spectator",
-    description: "The annual Harvard-Yale football rivalry unites the entire campus in a century-old tradition of fierce competition, tailgates, and unforgettable pranks.",
-    color: "hsl(220, 60%, 30%)",
+    newspaper: "Columbia Daily Spectator",
+    description: "The Columbia Daily Spectator is one of the oldest college newspapers in the country, serving the Columbia University community since 1877.",
+    color: "#aa1e21",
   },
   {
     school: "Princeton University",
-    tradition: "The Daily Princetonian",
-    description: "Thousands of alumni march through campus in reunion order during Reunions weekend — the longest-running alumni tradition in American higher education.",
-    color: "hsl(30, 85%, 45%)",
+    newspaper: "The Daily Princetonian",
+    description: "The Daily Princetonian is the independent student newspaper of Princeton University, one of the most respected college publications in the Ivy League.",
+    color: "#aa1e21",
   },
   {
-    school: "Stanford University",
-    tradition: "Full Moon on the Quad",
-    description: "Freshmen gather on the Main Quad under the full moon for this iconic welcome ritual — a Stanford rite of passage since the 1890s.",
-    color: "hsl(0, 60%, 35%)",
+    school: "Duke University",
+    newspaper: "The Duke Chronicle",
+    description: "The Duke Chronicle is the independent student newspaper of Duke University, covering campus life, athletics, and news since 1905.",
+    color: "#aa1e21",
   },
   {
-    school: "Columbia University",
-    tradition: "Orgo Night",
-    description: "The marching band storms Butler Library the night before the organic chemistry final, performing irreverent comedy in a legendary stress-relief tradition.",
-    color: "hsl(210, 55%, 40%)",
+    school: "Georgetown University",
+    newspaper: "The Hoya",
+    description: "The Hoya is the independent student newspaper of Georgetown University, serving the Hilltop community with news, opinion, and culture since 1920.",
+    color: "#aa1e21",
   },
 ];
 
@@ -59,40 +59,24 @@ const TraditionsSection = () => {
         </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {traditions.map((t, i) => (
+          {newspapers.map((n, i) => (
             <motion.div
-              key={t.school}
+              key={n.school + i}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.08 }}
               className="rounded-xl overflow-hidden bg-background border border-border group hover:border-primary/30 transition-all"
             >
-              {/* Color accent bar */}
-              <div className="h-1.5" style={{ backgroundColor: t.color }} />
+              <div className="h-1.5" style={{ backgroundColor: n.color }} />
               <div className="p-6">
                 <p className="text-xs font-semibold tracking-widest uppercase text-muted-foreground mb-1">
-                  {t.school}
+                  {n.school}
                 </p>
-                <h3 className="text-xl font-bold font-serif mb-3">{t.tradition}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                  {t.description}
+                <h3 className="text-xl font-bold font-serif mb-3">{n.newspaper}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {n.description}
                 </p>
-                <div>
-                  <p className="text-xs font-semibold tracking-widest uppercase text-primary mb-2">
-                    Notable Alumni
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {t.alumni.map((a) => (
-                      <span
-                        key={a}
-                        className="text-xs px-2.5 py-1 rounded-full bg-secondary text-secondary-foreground"
-                      >
-                        {a}
-                      </span>
-                    ))}
-                  </div>
-                </div>
               </div>
             </motion.div>
           ))}
