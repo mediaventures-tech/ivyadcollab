@@ -10,7 +10,7 @@ PAGES TO DOs:
 - Research and edit the stat information
 - Edit 'Network section'
 - Campus prestige: Verify the information. Add a bit mor eif needed and add in small squares below each description maybe stats of the newspaper (1st student led, oldest, 100k readers, etc).
-- Delete compeltely the Medi Kit section
+- Delete completely the Media Kit section
 - Ask Sriya about the footer.
 
 (2) About
