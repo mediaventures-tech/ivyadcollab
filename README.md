@@ -1,2 +1,3 @@
-# ivyadcollab
-A page for ivy add collab
+# Welcome to your Lovable project
+
+TODO: Document your project here
