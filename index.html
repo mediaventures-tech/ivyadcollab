@@ -11,19 +11,15 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles.css" />
-    <!--HEADER-->
   </head>
   <body>
     <header class="site-header">
       <div class="container header-inner">
-        <a class="brand" href="#">
-          <span class="brand-mark" aria-hidden="true"></span>
-          <span class="brand-name">IVY AD COLLAB</span>
-        </a>
+        <a class="brand" href="#">IVY AD COLLAB</a>
 
         <nav class="nav" aria-label="Primary">
           <a class="nav-link" href="#home">Home</a>
-          <a class="nav-link" href="about.html">About Us</a>
+          <a class="nav-link" href="#about">About Us</a>
           <a class="nav-link" href="#rate-card">Rate Card</a>
         </nav>
 
@@ -31,23 +27,21 @@
       </div>
     </header>
 
-    <!--HERO SECTION-->
-    
     <main id="home">
       <section class="hero">
         <div class="container hero-grid">
           <div class="hero-copy">
             <h1 class="hero-title">
-              REACH THE<br />
-              LEADERS<br />
-              OF THE<br />
+              <span>REACH THE</span><br />
+              <span>LEADERS</span><br />
+              <span>OF THE</span><br />
               FUTURE
             </h1>
             <p class="hero-subtitle">
               Connecting brands to students<br />
               at top U.S. universities.
             </p>
-            <a class="btn btn-primary" href="#contact">Get Started</a>
+            <a class="btn btn-primary hero-btn" href="#contact" aria-label="Contact"></a>
           </div>
 
           <div class="hero-media" aria-label="Hero image collage">
@@ -62,26 +56,6 @@
           </div>
         </div>
       </section>
-
-    <!--PARTNER PUBLICATION BAR-->
-
-      <section class="partner-bar" aria-label="Partner publications">
-        <div class="container partner-inner">
-          <div class="partner-label">
-            <span class="partner-kicker">OUR PARTNER PUBLICATIONS</span>
-          </div>
-          <div class="partner-names" role="list">
-            <span class="partner-name" role="listitem">PUBLICATION NAME</span>
-            <span class="partner-name" role="listitem">PUBLICATION NAME</span>
-            <span class="partner-name" role="listitem">PUBLICATION NAME</span>
-            <span class="partner-name" role="listitem">PUBLICATION NAME</span>
-            <span class="partner-name" role="listitem">PUBLICATION NAME</span>
-            <span class="partner-name" role="listitem">PUBLICATION NAME</span>
-          </div>
-        </div>
-      </section>
-
-    <!--NETWORK SECTION-->
 
       <section class="section" id="about">
         <div class="container">
@@ -114,10 +88,20 @@
           <div class="section-title-wrap section-title-wrap--tight">
             <h2 class="section-title">OUR CAMPUSES</h2>
           </div>
-          
-    <!--OUR CAMPUSES-->
 
           <div class="campus-grid">
+            <article class="campus-card campus-card--active">
+              <div class="campus-thumb" aria-hidden="true"></div>
+              <div class="campus-meta">
+                <div class="campus-name">UNI NAME LIKE PENN</div>
+                <div class="campus-sub">
+                  <span class="campus-sub-line">Newspaper Name</span>
+                  <span class="campus-sub-line">Location</span>
+                  <span class="campus-sub-line">Student body number</span>
+                </div>
+              </div>
+            </article>
+
             <article class="campus-card">
               <div class="campus-thumb" aria-hidden="true"></div>
               <div class="campus-meta">
@@ -156,8 +140,6 @@
           </div>
         </div>
       </section>
-      
-    <!--CALL TO ACTION-->
 
       <section class="cta" id="contact">
         <div class="container cta-inner">
@@ -169,16 +151,10 @@
           </p>
           <div class="cta-actions">
             <a class="btn btn-primary btn-sm" href="#contact">Contact Us</a>
-            <a class="btn btn-outline btn-sm" id="rate-card" href="#rate-card"
-              >Rate Card</a
-            >
+            <a class="btn btn-primary btn-sm" id="rate-card" href="#rate-card">Rate Card</a>
           </div>
         </div>
       </section>
-  
-    <!--FOOTER-->
-      
-      <footer class="footer-block" aria-hidden="true"></footer>
     </main>
   </body>
 </html>
