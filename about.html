@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Ivy Ad Collab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --crimson:      #A41034;
+      --crimson-mid:  #C41840;
+      --crimson-dark: #6B0822;
+      --crimson-deep: #2A0010;
+      --rose-light:   #F9EBF0;
+      --rose-mid:     #F0D3DC;
+      --cream:        #FDF6F0;
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans:  'DM Sans', Helvetica, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      color: #1a1a1a;
+      background: #fff;
+      overflow-x: hidden;
+    }
+
+    /* NAVBAR */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2.5rem;
+      transition: background 0.45s ease, box-shadow 0.45s ease;
+      background: transparent;
+    }
+
+    #navbar.scrolled {
+      background: #fff;
+      box-shadow: 0 1px 0 rgba(0,0,0,0.08);
+    }
+
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.45s ease;
+    }
+
+    #navbar.scrolled .nav-logo { color: var(--crimson); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.8);
+      transition: color 0.45s ease;
+    }
+
+    #navbar.scrolled .nav-links a { color: #555; }
+    .nav-links a:hover, .nav-links a.active { color: var(--crimson) !important; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      background: var(--crimson);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 2.5rem 5.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-arc {
+      position: absolute;
+      top: -8%; right: -4%;
+      width: 52vw; height: 52vw;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-arc-2 {
+      position: absolute;
+      top: -22%; right: -17%;
+      width: 68vw; height: 68vw;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-inner { max-width: 860px; }
+
+    .hero-eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: fadeUp 0.8s 0.2s forwards;
+    }
+
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 400;
+      color: #fff;
+      line-height: 1.12;
+      margin-bottom: 2rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.9s 0.4s forwards;
+    }
+
+    .hero h1 em { font-style: italic; color: rgba(255,255,255,0.7); }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.72);
+      max-width: 540px;
+      line-height: 1.85;
+      font-weight: 300;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeUp 0.9s 0.65s forwards;
+    }
+
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 2rem; right: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: rgba(255,255,255,0.35);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fadeUp 1s 1.2s forwards;
+    }
+
+    .scroll-line {
+      width: 40px; height: 1px;
+      background: rgba(255,255,255,0.3);
+    }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* OVERVIEW */
+    .overview {
+      background: var(--rose-light);
+      padding: 7rem 2.5rem;
+    }
+
+    .overview-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--crimson);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 400;
+      line-height: 1.25;
+      color: var(--crimson-deep);
+    }
+
+    .section-body {
+      font-size: 0.95rem;
+      color: #666;
+      line-height: 1.9;
+      font-weight: 300;
+    }
+
+    .overview-body {
+      font-size: 0.95rem;
+      color: #555;
+      line-height: 1.9;
+      font-weight: 300;
+      margin-top: 1.25rem;
+    }
+
+    .overview-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: rgba(164,16,52,0.12);
+    }
+
+    .stat-box {
+      background: var(--rose-light);
+      padding: 2rem 1.5rem;
+    }
+
+    .stat-number {
+      font-family: var(--serif);
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: var(--crimson);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-size: 0.78rem;
+      color: #888;
+      line-height: 1.5;
+      font-weight: 300;
+    }
+
+    /* WORD ANIMATION */
+    #word-section {
+      height: 280vh;
+      background: var(--crimson-deep);
+    }
+
+    .word-sticky {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 2.5rem;
+    }
+
+    .word-inner {
+      max-width: 820px;
+      text-align: center;
+    }
+
+    .word-eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.25);
+      margin-bottom: 2.5rem;
+    }
+
+    .word-statement {
+      font-family: var(--serif);
+      font-size: clamp(1.55rem, 3.2vw, 2.7rem);
+      font-weight: 400;
+      line-height: 1.55;
+    }
+
+    .word-statement .word {
+      display: inline;
+      color: rgba(255,255,255,0.14);
+      font-weight: 400;
+      transition: color 0.12s ease, font-weight 0.12s ease;
+    }
+
+    /* CIRCLE / MISSION & VISION */
+    #circle-section {
+      height: 320vh;
+      background: var(--crimson);
+    }
+
+    .circle-sticky {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .circle-left {
+      width: 50%;
+      padding: 0 4rem;
+      position: relative;
+    }
+
+    .panels-host {
+      position: relative;
+      height: 400px;
+    }
+
+    .circle-panel {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+
+    .panel-number {
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 1.5rem;
+    }
+
+    .panel-subtitle {
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 0.75rem;
+    }
+
+    .panel-title {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 2.8vw, 2.8rem);
+      font-weight: 400;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+
+    .panel-title em { font-style: italic; color: rgba(255,255,255,0.65); }
+
+    .panel-body {
+      font-size: 0.93rem;
+      color: rgba(255,255,255,0.68);
+      line-height: 1.9;
+      font-weight: 300;
+      max-width: 400px;
+    }
+
+    .panel-dots {
+      margin-top: 2.5rem;
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .pdot {
+      height: 2px;
+      border-radius: 1px;
+      background: rgba(255,255,255,0.25);
+      transition: background 0.3s, width 0.3s;
+      width: 24px;
+    }
+
+    .pdot.on { background: #fff; width: 48px; }
+
+    /* Rings */
+    .circle-right {
+      width: 50%;
+      height: 100vh;
+      position: relative;
+      overflow: visible;
+    }
+
+    .rings-wrapper {
+      position: absolute;
+      top: 50%;
+      right: -180px;
+      transform: translateY(-50%);
+      width: 640px;
+      height: 640px;
+    }
+
+    .ring-group {
+      position: absolute;
+      inset: 0;
+    }
+
+    .ring-group svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* PARTNERS */
+    .partners {
+      background: var(--rose-mid);
+      padding: 7rem 2.5rem;
+    }
+
+    .partners-inner { max-width: 1000px; margin: 0 auto; }
+
+    .partners-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .partners-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(164,16,52,0.15);
+      border: 1px solid rgba(164,16,52,0.15);
+    }
+
+    .partner-item {
+      background: var(--rose-mid);
+      padding: 2rem 1.75rem;
+      transition: background 0.22s;
+    }
+
+    .partner-item:hover { background: var(--rose-light); }
+
+    .partner-num {
+      font-size: 0.65rem;
+      color: var(--crimson);
+      letter-spacing: 0.12em;
+      margin-bottom: 0.6rem;
+      font-weight: 600;
+    }
+
+    .partner-school {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--crimson-deep);
+      margin-bottom: 0.25rem;
+    }
+
+    .partner-pub {
+      font-size: 0.8rem;
+      color: #888;
+      font-weight: 300;
+    }
+
+    /* PEOPLE */
+    .people {
+      background: var(--cream);
+      padding: 7rem 2.5rem;
+    }
+
+    .people-inner { max-width: 1000px; margin: 0 auto; }
+
+    .people-intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: end;
+      margin-bottom: 4rem;
+    }
+
+    .people-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.5rem;
+    }
+
+    .person-card {
+      text-align: center;
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .person-card.visible { opacity: 1; transform: none; }
+
+    .person-avatar {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      margin: 0 auto 1rem;
+      background: var(--rose-mid);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      color: var(--crimson);
+      overflow: hidden;
+      border: 2px solid transparent;
+      transition: border-color 0.28s, transform 0.28s;
+    }
+
+    .person-card:hover .person-avatar {
+      border-color: var(--crimson);
+      transform: scale(1.06);
+    }
+
+    .person-avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+    .person-name {
+      font-weight: 600;
+      font-size: 0.82rem;
+      color: var(--crimson-deep);
+      margin-bottom: 0.3rem;
+      line-height: 1.35;
+    }
+
+    .person-role {
+      font-size: 0.72rem;
+      color: #999;
+      line-height: 1.45;
+      font-weight: 300;
+    }
+
+    /* FADE-IN UTILITY */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-in.visible { opacity: 1; transform: none; }
+
+    /* FOOTER */
+    footer {
+      background: var(--crimson-deep);
+      padding: 3rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-logo {
+      font-family: var(--serif);
+      font-size: 1rem;
+      color: rgba(255,255,255,0.55);
+    }
+
+    .footer-logo span { color: var(--crimson-mid); }
+
+    footer p {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.3);
+      font-weight: 300;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .overview-inner, .people-intro { grid-template-columns: 1fr; gap: 2.5rem; }
+      .circle-right { display: none; }
+      .circle-left { width: 100%; }
+      #circle-section { height: 220vh; }
+      .partners-grid { grid-template-columns: 1fr 1fr; }
+      .people-grid { grid-template-columns: repeat(3, 1fr); }
+      #navbar, .hero, .overview, .partners, .people { padding-left: 1.5rem; padding-right: 1.5rem; }
+    }
+
+    @media (max-width: 480px) {
+      .people-grid { grid-template-columns: repeat(2, 1fr); }
+      .partners-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">Ivy Ad Collab</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-arc"></div>
+    <div class="hero-arc-2"></div>
+    <div class="hero-inner">
+      <p class="hero-eyebrow">About the Ivy Ad Collab</p>
+      <h1>One platform.<br><em>Six elite campuses.</em><br>One unified voice.</h1>
+      <p class="hero-sub">A national student media advertising network operated under The Daily Pennsylvanian — connecting brands to the next generation of leaders through a single contract, one rate card, and one performance report.</p>
+    </div>
+    <div class="hero-scroll-hint">
+      <div class="scroll-line"></div>
+      Scroll to explore
+    </div>
+  </section>
+
+  <!-- OVERVIEW -->
+  <section class="overview">
+    <div class="overview-inner">
+      <div class="fade-in">
+        <p class="section-label">Who We Are</p>
+        <h2 class="section-title">Redefining how brands reach the next generation</h2>
+        <p class="overview-body">
+          We aggregate six premier university newspapers into a single, streamlined sales channel. By centralizing pricing, sponsor outreach, campaign execution, and reporting, we eliminate the friction national advertisers face when trying to reach high-value college demographics across multiple top-tier institutions.
+          <br /><br />
+          No more negotiating with six different publications. No fragmented reporting. Just one deal — and access to the most engaged student audiences in the country.
+        </p>
+      </div>
+      <div class="fade-in" style="transition-delay:0.15s;">
+        <div class="overview-stats">
+          <div class="stat-box">
+            <div class="stat-number" data-target="450" data-suffix="K+">—</div>
+            <div class="stat-label">Monthly impressions across our network</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number" data-target="6" data-suffix="">—</div>
+            <div class="stat-label">Elite university publications</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number" data-target="69" data-suffix="%">—</div>
+            <div class="stat-label">Of readers ages 18–21</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number" data-target="1" data-suffix=" deal">—</div>
+            <div class="stat-label">To reach all six campuses</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORD ANIMATION -->
+  <section id="word-section">
+    <div class="word-sticky">
+      <div class="word-inner">
+        <p class="word-eyebrow">Our approach</p>
+        <p class="word-statement" id="word-statement"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CIRCLE: MISSION & VISION -->
+  <section id="circle-section">
+    <div class="circle-sticky">
+
+      <div class="circle-left">
+        <div class="panels-host">
+
+          <div class="circle-panel" id="mission-panel">
+            <div class="panel-number">01 — 02</div>
+            <p class="panel-subtitle">Mission</p>
+            <h2 class="panel-title">Built by students,<br><em>for the brands</em><br>that want to reach them.</h2>
+            <p class="panel-body">To connect national brands with the most valuable collegiate audience through a unified, student-owned platform that preserves editorial independence and generates meaningful revenue for campus media.</p>
+            <div class="panel-dots">
+              <div class="pdot on" id="pd1"></div>
+              <div class="pdot" id="pd2"></div>
+            </div>
+          </div>
+
+          <div class="circle-panel" id="vision-panel" style="opacity:0;">
+            <div class="panel-number">02 — 02</div>
+            <p class="panel-subtitle">Vision</p>
+            <h2 class="panel-title">A future where<br><em>every student voice</em><br>thrives financially.</h2>
+            <p class="panel-body">Every top-tier student publication financially empowered — and every brand seeking the next generation of leaders able to reach them authentically, efficiently, and at scale through one trusted channel.</p>
+            <div class="panel-dots">
+              <div class="pdot" id="pd3"></div>
+              <div class="pdot on" id="pd4"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="circle-right">
+        <div class="rings-wrapper">
+
+          <div class="ring-group" id="ring1">
+            <svg viewBox="0 0 640 640" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="320" cy="320" r="298" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1" stroke-dasharray="55 18" />
+            </svg>
+          </div>
+
+          <div class="ring-group" id="ring2">
+            <svg viewBox="0 0 640 640" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="320" cy="320" r="260" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2" stroke-dasharray="110 38" />
+            </svg>
+          </div>
+
+          <div class="ring-group" id="ring3">
+            <svg viewBox="0 0 640 640" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="320" cy="320" r="215" fill="none" stroke="rgba(255,255,255,0.32)" stroke-width="3.5" stroke-dasharray="170 52" />
+            </svg>
+          </div>
+
+          <div class="ring-group" id="ring4">
+            <svg viewBox="0 0 640 640" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="320" cy="320" r="163" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="6" stroke-dasharray="210 75" />
+            </svg>
+          </div>
+
+          <div class="ring-group" style="opacity:0.08;">
+            <svg viewBox="0 0 640 640" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="320" cy="320" r="105" fill="none" stroke="#fff" stroke-width="1" />
+            </svg>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PARTNER PUBLICATIONS -->
+  <section class="partners">
+    <div class="partners-inner">
+      <div class="partners-header fade-in">
+        <div>
+          <p class="section-label">Our Network</p>
+          <h2 class="section-title" style="color:var(--crimson-deep);">Six publications.<br>One channel.</h2>
+        </div>
+        <p class="section-body" style="max-width:360px;">Each partner publication brings a loyal, high-achieving readership that national brands struggle to reach through conventional channels.</p>
+      </div>
+      <div class="partners-grid fade-in" style="transition-delay:0.15s;">
+        <div class="partner-item"><div class="partner-num">01</div><div class="partner-school">University of Pennsylvania</div><div class="partner-pub">The Daily Pennsylvanian</div></div>
+        <div class="partner-item"><div class="partner-num">02</div><div class="partner-school">Brown University</div><div class="partner-pub">The Brown Daily Herald</div></div>
+        <div class="partner-item"><div class="partner-num">03</div><div class="partner-school">Princeton University</div><div class="partner-pub">The Daily Princetonian</div></div>
+        <div class="partner-item"><div class="partner-num">04</div><div class="partner-school">Duke University</div><div class="partner-pub">The Chronicle</div></div>
+        <div class="partner-item"><div class="partner-num">05</div><div class="partner-school">Georgetown University</div><div class="partner-pub">The Hoya</div></div>
+        <div class="partner-item"><div class="partner-num">06</div><div class="partner-school">Columbia University</div><div class="partner-pub">Columbia Daily Spectator</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PEOPLE -->
+  <section class="people">
+    <div class="people-inner">
+      <div class="people-intro">
+        <div class="fade-in">
+          <p class="section-label">Our Team</p>
+          <h2 class="section-title">The people<br>behind the platform</h2>
+        </div>
+        <div class="fade-in" style="transition-delay:0.1s;">
+          <p class="section-body">Five students at the University of Pennsylvania, each bringing deep knowledge of student media, advertising, and partnership development to build something that's never existed before.</p>
+        </div>
+      </div>
+
+      <div class="people-grid">
+        <div class="person-card">
+          <div class="person-avatar">
+            <!-- Replace initials with: <img src="images/sriya.jpg" alt="Sriya Tallapragada" /> -->
+            ST
+          </div>
+          <div class="person-name">Sriya Tallapragada</div>
+          <div class="person-role">Media Ventures Manager</div>
+        </div>
+        <div class="person-card">
+          <div class="person-avatar">CE</div>
+          <div class="person-name">Carolina Escudero Manrique</div>
+          <div class="person-role">Co-Deputy Manager of Web Development</div>
+        </div>
+        <div class="person-card">
+          <div class="person-avatar">AG</div>
+          <div class="person-name">Amulya Gottipati</div>
+          <div class="person-role">Co-Deputy Manager of Web Development</div>
+        </div>
+        <div class="person-card">
+          <div class="person-avatar">GF</div>
+          <div class="person-name">Gabi Fragale</div>
+          <div class="person-role">Deputy Manager of Partnerships</div>
+        </div>
+        <div class="person-card">
+          <div class="person-avatar">DC</div>
+          <div class="person-name">Dario Cavalieri</div>
+          <div class="person-role">Deputy Manager of Corporate Outreach</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Ivy Ad <span>Collab</span></div>
+    <p>Operated under The Daily Pennsylvanian &middot; University of Pennsylvania &middot; &copy; 2025</p>
+  </footer>
+
+
+  <script>
+    /* 1. Navbar scroll */
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+
+    /* 2. Word animation */
+    const STATEMENT = "We built a single platform that gives national brands seamless access to over 450,000 students across six elite campuses — through one contract, one rate card, and one performance report.";
+    const wordEl = document.getElementById('word-statement');
+
+    STATEMENT.split(' ').forEach((w, i, arr) => {
+      const span = document.createElement('span');
+      span.className = 'word';
+      span.textContent = w;
+      wordEl.appendChild(span);
+      if (i < arr.length - 1) wordEl.appendChild(document.createTextNode(' '));
+    });
+
+    const wordSection = document.getElementById('word-section');
+    const wordSpans = wordEl.querySelectorAll('.word');
+
+    function updateWords() {
+      const rect = wordSection.getBoundingClientRect();
+      const total = wordSection.offsetHeight - window.innerHeight;
+      const progress = Math.max(0, Math.min(1, -rect.top / total));
+      const litCount = Math.round(progress * (wordSpans.length + 3));
+      wordSpans.forEach((w, i) => {
+        const on = i < litCount;
+        w.style.color = on ? '#fff' : 'rgba(255,255,255,0.14)';
+        w.style.fontWeight = on ? '700' : '400';
+      });
+    }
+
+    window.addEventListener('scroll', updateWords, { passive: true });
+    updateWords();
+
+
+    /* 3. Rotating circles + panel crossfade */
+    const circleSection = document.getElementById('circle-section');
+    const ring1 = document.getElementById('ring1');
+    const ring2 = document.getElementById('ring2');
+    const ring3 = document.getElementById('ring3');
+    const ring4 = document.getElementById('ring4');
+    const mPanel = document.getElementById('mission-panel');
+    const vPanel = document.getElementById('vision-panel');
+    const pd1 = document.getElementById('pd1');
+    const pd2 = document.getElementById('pd2');
+
+    function updateCircle() {
+      const rect = circleSection.getBoundingClientRect();
+      const total = circleSection.offsetHeight - window.innerHeight;
+      const p = Math.max(0, Math.min(1, -rect.top / total));
+
+      /* Each ring rotates at a different speed and direction */
+      ring1.style.transform = `rotate(${p * 310}deg)`;
+      ring2.style.transform = `rotate(${-p * 230}deg)`;
+      ring3.style.transform = `rotate(${p * 410}deg)`;
+      ring4.style.transform = `rotate(${-p * 175}deg)`;
+
+      /* Panel crossfade */
+      let mO = 1, vO = 0, mY = 0, vY = 30;
+
+      if (p >= 0.38 && p < 0.58) {
+        const t = (p - 0.38) / 0.20;
+        mO = 1 - t; vO = t;
+        mY = -30 * t; vY = 30 * (1 - t);
+      } else if (p >= 0.58) {
+        mO = 0; vO = 1; mY = -30; vY = 0;
+      }
+
+      mPanel.style.opacity = mO;
+      mPanel.style.transform = `translateY(calc(-50% + ${mY}px))`;
+      vPanel.style.opacity = vO;
+      vPanel.style.transform = `translateY(calc(-50% + ${vY}px))`;
+
+      /* Dots */
+      const onMission = p < 0.5;
+      pd1.className = 'pdot' + (onMission ? ' on' : '');
+      pd2.className = 'pdot' + (onMission ? '' : ' on');
+    }
+
+    window.addEventListener('scroll', updateCircle, { passive: true });
+    updateCircle();
+
+
+    /* 4. Count-up stats */
+    function countUp(el) {
+      const target = parseInt(el.dataset.target);
+      const suffix = el.dataset.suffix || '';
+      const start = performance.now();
+      const dur = 1400;
+      (function step(now) {
+        const t = Math.min((now - start) / dur, 1);
+        const ease = 1 - Math.pow(1 - t, 3);
+        el.textContent = Math.round(ease * target).toLocaleString() + suffix;
+        if (t < 1) requestAnimationFrame(step);
+      })(start);
+    }
+
+    new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { countUp(e.target); statObs.unobserve(e.target); }
+      });
+    }, { threshold: 0.6 });
+
+    const statObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { countUp(e.target); statObs.unobserve(e.target); } });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.stat-number[data-target]').forEach(el => statObs.observe(el));
+
+
+    /* 5. Fade-ins */
+    const fadeObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-in').forEach(el => fadeObs.observe(el));
+
+
+    /* 6. People cards stagger */
+    const cardObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.querySelectorAll('.person-card').forEach((c, i) => {
+            setTimeout(() => c.classList.add('visible'), i * 110);
+          });
+          cardObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    const grid = document.querySelector('.people-grid');
+    if (grid) cardObs.observe(grid);
+  </script>
+
+</body>
+</html>
