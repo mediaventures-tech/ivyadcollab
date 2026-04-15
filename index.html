@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles.css" />
@@ -29,29 +29,31 @@
 
     <main id="home">
       <section class="hero">
-        <div class="container hero-grid">
-          <div class="hero-copy">
-            <h1 class="hero-title">
-              <span>REACH THE</span><br />
-              <span>LEADERS</span><br />
-              <span>OF THE</span><br />
-              FUTURE
-            </h1>
-            <p class="hero-subtitle">
-              Connecting brands to students<br />
-              at top U.S. universities.
-            </p>
-            <a class="btn btn-primary hero-btn" href="#contact" aria-label="Contact"></a>
-          </div>
+        <div class="container">
+          <div class="hero-grid">
+            <div class="hero-copy">
+              <h1 class="hero-title">
+                <span class="hero-title-line">REACH THE</span>
+                <span class="hero-title-line">LEADERS</span>
+                <span class="hero-title-line">OF THE</span>
+                <span class="hero-title-line">FUTURE</span>
+              </h1>
+              <p class="hero-subtitle">
+                Connecting brands to students<br />
+                at top U.S. universities.
+              </p>
+              <a class="btn btn-primary hero-btn" href="#contact" aria-label="Contact"></a>
+            </div>
 
-          <div class="hero-media" aria-label="Hero image collage">
-            <div class="mosaic">
-              <div class="tile tile-1"></div>
-              <div class="tile tile-2"></div>
-              <div class="tile tile-3"></div>
-              <div class="tile tile-4"></div>
-              <div class="tile tile-5"></div>
-              <div class="tile tile-6"></div>
+            <div class="hero-media" aria-label="Hero image collage">
+              <div class="mosaic">
+                <div class="tile tile-1"></div>
+                <div class="tile tile-2"></div>
+                <div class="tile tile-3"></div>
+                <div class="tile tile-4"></div>
+                <div class="tile tile-5"></div>
+                <div class="tile tile-6"></div>
+              </div>
             </div>
           </div>
         </div>
@@ -66,21 +68,35 @@
 
           <div class="network-grid">
             <ol class="network-list">
-              <li><span class="n">01</span> <strong>Unified</strong></li>
-              <li><span class="n">02</span> <strong>Custom Ads</strong></li>
-              <li><span class="n">03</span> <strong>Performance</strong></li>
-              <li><span class="n">04</span> <strong>The Audience</strong></li>
+              <li class="network-item network-item--active" data-network-index="0">
+                <button class="network-trigger" type="button" aria-pressed="true">
+                  <span class="n">01</span>
+                  <strong>Unified</strong>
+                </button>
+              </li>
+              <li class="network-item" data-network-index="1">
+                <button class="network-trigger" type="button" aria-pressed="false">
+                  <span class="n">02</span>
+                  <strong>Custom Ads</strong>
+                </button>
+              </li>
+              <li class="network-item" data-network-index="2">
+                <button class="network-trigger" type="button" aria-pressed="false">
+                  <span class="n">03</span>
+                  <strong>Performance</strong>
+                </button>
+              </li>
+              <li class="network-item" data-network-index="3">
+                <button class="network-trigger" type="button" aria-pressed="false">
+                  <span class="n">04</span>
+                  <strong>The Audience</strong>
+                </button>
+              </li>
             </ol>
 
             <div class="network-copy">
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-                sit amet finibus urna. Proin blandit et lectus consequat cursus.
-                Donec maximus diam et hendrerit pretium. Donec gravida sapien
-                enim, eu finibus urna suscipit nec. Vivamus lobortis mollis
-                augue, et finibus libero faucibus vestibulum. Aliquam sit amet
-                orci dolor. In vitae turpis in orci vehicula malesuada ut vitae
-                sem. Donec gravida sapien enim.
+              <p id="network-description">
+                1111111 1111111 1111111 1111111 1111111 1111111 1111111 1111111.
               </p>
             </div>
           </div>
@@ -89,54 +105,87 @@
             <h2 class="section-title">OUR CAMPUSES</h2>
           </div>
 
-          <div class="campus-grid">
-            <article class="campus-card campus-card--active">
-              <div class="campus-thumb" aria-hidden="true"></div>
-              <div class="campus-meta">
-                <div class="campus-name">UNI NAME LIKE PENN</div>
-                <div class="campus-sub">
-                  <span class="campus-sub-line">Newspaper Name</span>
-                  <span class="campus-sub-line">Location</span>
-                  <span class="campus-sub-line">Student body number</span>
-                </div>
-              </div>
-            </article>
+          <div class="campus-carousel">
+            <div class="campus-viewport" id="campus-viewport">
+              <div class="campus-grid">
+                <article class="campus-card">
+                  <div class="campus-thumb" aria-hidden="true"></div>
+                  <div class="campus-meta">
+                    <div class="campus-name">UNI NAME LIKE PENN</div>
+                    <div class="campus-sub">
+                      <span class="campus-sub-line">Newspaper Name</span>
+                      <span class="campus-sub-line">Location</span>
+                      <span class="campus-sub-line">Student body number</span>
+                    </div>
+                  </div>
+                </article>
 
-            <article class="campus-card">
-              <div class="campus-thumb" aria-hidden="true"></div>
-              <div class="campus-meta">
-                <div class="campus-name">UNI NAME LIKE PENN</div>
-                <div class="campus-sub">
-                  <span class="campus-sub-line">Newspaper Name</span>
-                  <span class="campus-sub-line">Location</span>
-                  <span class="campus-sub-line">Student body number</span>
-                </div>
-              </div>
-            </article>
+                <article class="campus-card">
+                  <div class="campus-thumb" aria-hidden="true"></div>
+                  <div class="campus-meta">
+                    <div class="campus-name">UNI NAME LIKE PENN</div>
+                    <div class="campus-sub">
+                      <span class="campus-sub-line">Newspaper Name</span>
+                      <span class="campus-sub-line">Location</span>
+                      <span class="campus-sub-line">Student body number</span>
+                    </div>
+                  </div>
+                </article>
 
-            <article class="campus-card">
-              <div class="campus-thumb" aria-hidden="true"></div>
-              <div class="campus-meta">
-                <div class="campus-name">UNI NAME LIKE PENN</div>
-                <div class="campus-sub">
-                  <span class="campus-sub-line">Newspaper Name</span>
-                  <span class="campus-sub-line">Location</span>
-                  <span class="campus-sub-line">Student body number</span>
-                </div>
-              </div>
-            </article>
+                <article class="campus-card">
+                  <div class="campus-thumb" aria-hidden="true"></div>
+                  <div class="campus-meta">
+                    <div class="campus-name">UNI NAME LIKE PENN</div>
+                    <div class="campus-sub">
+                      <span class="campus-sub-line">Newspaper Name</span>
+                      <span class="campus-sub-line">Location</span>
+                      <span class="campus-sub-line">Student body number</span>
+                    </div>
+                  </div>
+                </article>
 
-            <article class="campus-card">
-              <div class="campus-thumb" aria-hidden="true"></div>
-              <div class="campus-meta">
-                <div class="campus-name">UNI NAME LIKE PENN</div>
-                <div class="campus-sub">
-                  <span class="campus-sub-line">Newspaper Name</span>
-                  <span class="campus-sub-line">Location</span>
-                  <span class="campus-sub-line">Student body number</span>
-                </div>
+                <article class="campus-card">
+                  <div class="campus-thumb" aria-hidden="true"></div>
+                  <div class="campus-meta">
+                    <div class="campus-name">UNI NAME LIKE PENN</div>
+                    <div class="campus-sub">
+                      <span class="campus-sub-line">Newspaper Name</span>
+                      <span class="campus-sub-line">Location</span>
+                      <span class="campus-sub-line">Student body number</span>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="campus-card">
+                  <div class="campus-thumb" aria-hidden="true"></div>
+                  <div class="campus-meta">
+                    <div class="campus-name">UNI NAME LIKE PENN</div>
+                    <div class="campus-sub">
+                      <span class="campus-sub-line">Newspaper Name</span>
+                      <span class="campus-sub-line">Location</span>
+                      <span class="campus-sub-line">Student body number</span>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="campus-card">
+                  <div class="campus-thumb" aria-hidden="true"></div>
+                  <div class="campus-meta">
+                    <div class="campus-name">UNI NAME LIKE PENN</div>
+                    <div class="campus-sub">
+                      <span class="campus-sub-line">Newspaper Name</span>
+                      <span class="campus-sub-line">Location</span>
+                      <span class="campus-sub-line">Student body number</span>
+                    </div>
+                  </div>
+                </article>
               </div>
-            </article>
+            </div>
+
+            <div class="campus-dots" aria-label="Campus pages">
+              <button class="campus-dot campus-dot--active" type="button" aria-label="Go to campus page 1"></button>
+              <button class="campus-dot" type="button" aria-label="Go to campus page 2"></button>
+            </div>
           </div>
         </div>
       </section>
@@ -156,5 +205,153 @@
         </div>
       </section>
     </main>
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="footer-brand-block">
+          <a class="brand footer-brand" href="#home">IVY AD COLLAB</a>
+          <p class="footer-copy">
+            Connecting brands to students at top U.S. universities.
+          </p>
+        </div>
+
+        <div class="footer-columns">
+          <div class="footer-column">
+            <h3 class="footer-heading">NAVIGATION</h3>
+            <nav class="footer-nav" aria-label="Footer navigation">
+              <a class="footer-link" href="#home">Home</a>
+              <a class="footer-link" href="#about">About Us</a>
+              <a class="footer-link" href="#rate-card">Rate Card</a>
+            </nav>
+          </div>
+
+          <div class="footer-column">
+            <h3 class="footer-heading">CONTACT</h3>
+            <nav class="footer-nav" aria-label="Footer contact">
+              <a class="footer-link" href="#contact">Contact Us</a>
+            </nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="container footer-bottom">
+        <p class="footer-legal">© 2026 IVY AD COLLAB. All rights reserved.</p>
+        <a class="footer-legal-link" href="#contact">Contact Us</a>
+      </div>
+    </footer>
+    <script>
+      (() => {
+        const items = Array.from(document.querySelectorAll(".network-item"));
+        const description = document.querySelector("#network-description");
+        if (!items.length) return;
+
+        const networkContent = [
+          {
+            title: "Unified",
+            description: "1111111 1111111 1111111 1111111 1111111 1111111 1111111 1111111."
+          },
+          {
+            title: "Custom Ads",
+            description: "2222222 2222222 2222222 2222222 2222222 2222222 2222222 2222222."
+          },
+          {
+            title: "Performance",
+            description: "3333333 3333333 3333333 3333333 3333333 3333333 3333333 3333333."
+          },
+          {
+            title: "The Audience",
+            description: "4444444 4444444 4444444 4444444 4444444 4444444 4444444 4444444."
+          }
+        ];
+
+        let activeIndex = items.findIndex((item) =>
+          item.classList.contains("network-item--active")
+        );
+
+        if (activeIndex < 0) activeIndex = 0;
+
+        const updateDescription = (index) => {
+          if (!description || !networkContent[index]) return;
+          description.textContent = networkContent[index].description;
+        };
+
+        const updateActiveItem = (nextIndex) => {
+          activeIndex = nextIndex;
+
+          items.forEach((item, index) => {
+            const isActive = index === activeIndex;
+            item.classList.toggle("network-item--active", isActive);
+            const trigger = item.querySelector(".network-trigger");
+            if (trigger) trigger.setAttribute("aria-pressed", String(isActive));
+          });
+
+          updateDescription(activeIndex);
+        };
+
+        items.forEach((item, index) => {
+          const trigger = item.querySelector(".network-trigger");
+          if (!trigger) return;
+
+          trigger.addEventListener("mouseenter", () => updateActiveItem(index));
+        });
+
+        updateActiveItem(activeIndex);
+      })();
+
+      (() => {
+        const viewport = document.querySelector("#campus-viewport");
+        const dots = Array.from(document.querySelectorAll(".campus-dot"));
+        if (!viewport || !dots.length) return;
+
+        let isDragging = false;
+        let startX = 0;
+        let startScrollLeft = 0;
+
+        const getPageWidth = () => viewport.clientWidth;
+
+        const updateDots = () => {
+          const pageWidth = getPageWidth();
+          const pageIndex = pageWidth ? Math.round(viewport.scrollLeft / pageWidth) : 0;
+
+          dots.forEach((dot, index) => {
+            dot.classList.toggle("campus-dot--active", index === pageIndex);
+            dot.setAttribute("aria-pressed", String(index === pageIndex));
+          });
+        };
+
+        dots.forEach((dot, index) => {
+          dot.addEventListener("click", () => {
+            viewport.scrollTo({ left: getPageWidth() * index, behavior: "smooth" });
+          });
+        });
+
+        viewport.addEventListener("pointerdown", (event) => {
+          isDragging = true;
+          startX = event.clientX;
+          startScrollLeft = viewport.scrollLeft;
+          viewport.classList.add("is-dragging");
+          viewport.setPointerCapture(event.pointerId);
+        });
+
+        viewport.addEventListener("pointermove", (event) => {
+          if (!isDragging) return;
+          const deltaX = event.clientX - startX;
+          viewport.scrollLeft = startScrollLeft - deltaX;
+        });
+
+        const endDrag = (event) => {
+          if (!isDragging) return;
+          isDragging = false;
+          viewport.classList.remove("is-dragging");
+          if (event) viewport.releasePointerCapture(event.pointerId);
+        };
+
+        viewport.addEventListener("pointerup", endDrag);
+        viewport.addEventListener("pointercancel", endDrag);
+        viewport.addEventListener("scroll", updateDots, { passive: true });
+        window.addEventListener("resize", updateDots);
+
+        updateDots();
+      })();
+    </script>
   </body>
 </html>
