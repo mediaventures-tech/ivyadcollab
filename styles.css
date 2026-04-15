@@ -408,28 +408,27 @@ a {
 /* Responsive */
 @media (max-width: 900px) {
   .header-inner {
-    display: flex;
-    flex-wrap: wrap;
-    height: auto;
-    padding: 12px 0;
-    gap: 12px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    height: 70px;
+    gap: 10px;
   }
 
   .nav {
     display: flex;
-    order: 3;
-    width: 100%;
     justify-content: center;
-    gap: 16px;
+    gap: 12px;
+    font-size: 11px;
   }
 
   .brand {
-    order: 1;
+    font-size: 11px;
   }
 
   .btn-pill {
-    order: 2;
-    margin-left: auto;
+    margin-left: 0;
+    padding: 9px 13px;
+    font-size: 11px;
   }
 
   .hero-grid {
