@@ -475,10 +475,33 @@ main {
 .campus-thumb {
   border-radius: 32px;
   background: var(--card);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   transition: transform 220ms var(--ease-soft), box-shadow 220ms var(--ease-soft),
     background 180ms ease;
 }
+.campus-card:nth-child(1) .campus-thumb {
+  background-image: url("./uni-pics/penn.jpg");
+}
+.campus-card:nth-child(4) .campus-thumb {
+  background-image: url("./uni-pics/dartmouth.jpg");
+}
 
+.campus-card:nth-child(5) .campus-thumb {
+  background-image: url("./uni-pics/brown.jpg");
+}
+
+.campus-card:nth-child(6) .campus-thumb {
+  background-image: url("./uni-pics/columbia.jpg");
+}
+.campus-card:nth-child(2) .campus-thumb {
+  background-image: url("./uni-pics/DUKE.jpg");
+}
+
+.campus-card:nth-child(3) .campus-thumb {
+  background-image: url("./uni-pics/Georgetown.jpg");
+}
 .campus-card:hover .campus-thumb {
   transform: translateY(-3px);
   box-shadow: var(--shadow);
