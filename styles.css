@@ -269,37 +269,37 @@ main {
 .tile-1 {
   grid-column: 1 / 2;
   grid-row: 1 / 3;
-  background-image: url("./uni-pics/penn.jpg");
+  background-image: url("./images/penn.jpg");
 }
 
 .tile-2 {
   grid-column: 2 / 3;
   grid-row: 1 / 2;
-  background-image: url("./uni-pics/DUKE.jpg");
+  background-image: url("./images/DUKE.jpg");
 }
 
 .tile-3 {
   grid-column: 3 / 4;
   grid-row: 1 / 2;
-  background-image: url("./uni-pics/Georgetown.jpg");
+  background-image: url("./images/Georgetown.jpg");
 }
 
 .tile-4 {
   grid-column: 2 / 3;
   grid-row: 2 / 4;
-  background-image: url("./uni-pics/dartmouth.jpg");
+  background-image: url("./images/dartmouth.jpg");
 }
 
 .tile-5 {
   grid-column: 3 / 4;
   grid-row: 2 / 4;
-  background-image: url("./uni-pics/brown.jpg");
+  background-image: url("./images/brown.jpg");
 }
 
 .tile-6 {
   grid-column: 1 / 2;
   grid-row: 3 / 4;
-  background-image: url("./uni-pics/columbia.jpg");
+  background-image: url("./images/columbia.jpg");
 }
 
 /* Sections */
